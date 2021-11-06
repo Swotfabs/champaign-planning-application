@@ -38,6 +38,8 @@ everything from the javascript to the HTML to the css.
 	* Have the most experience with Angular, a heavily component focused setup, I went with React as the one most similar to what I know.
 	* I spent all of Thursday (6 to 7 hours was all the rest of my life permitted) learning React as best I could. I also found out how to use React with external APIs and created a test project with that.
 	* Friday was spent with more planning and documentation reading and a whiteboard until I just sat myself down and forced myself to code as you can have all of the theory you want, but if you cannot put it into practice you have nothing to show for it.
+	* Have a functioning year selector component that communicates with the data rendering component in a way that leaves the overarching App component a function component which means I'll be able to use hooks to fetch the data from the api asynchrnonously.
+		* Which is to say I actually got a solid amount done on Friday.
 
 #### Plans / ToDo
 This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.
