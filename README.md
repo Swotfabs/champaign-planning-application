@@ -1,6 +1,7 @@
 # Description
 
 This is a small react project that is part of an application to the Champaign County Regional Planning Commission Software Developer I position.
+Created by Fabian Junge.
 
 ## Objective
 
