@@ -63,7 +63,7 @@ function App() {
   const years = ['2010', '2011', '2012', '2013'];
   const defaultYear = years[0]
 
-  const [currentYear, setCurrentYear] = useState(defaultYear);
+  const [currentYear, setCurrentYear] = useState(null);
 
   const onYearSelect = (newYear) => {setCurrentYear(newYear);};
 
