@@ -3,11 +3,9 @@ import './App.css';
 // TODO replace with dropdown selector
 function Dropdown(props) {
   return (
-    <div>
-      <p>
+    <p>
         Year will go here.
-      </p>
-    </div>
+    </p>
   );
 }
 
@@ -23,6 +21,8 @@ function RenderData(props) {
 }
 
 // Going to have both of the child elements in this, will likely lift up the state to this as well
+// Likely going to have api logic in here as well
+// Not sure whether this will be via function with Hooks or a class
 function App() {
   return (
     <div className="App">
