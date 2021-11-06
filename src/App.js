@@ -4,7 +4,7 @@ import './App.css';
 class YearSelect extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {value: props.defaultYear};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,15 +61,16 @@ function RenderData(props) {
 // Not sure whether this will be via function with Hooks or a class
 function App() {
   const years = ['2010', '2011', '2012', '2013'];
+  const defaultYear = years[0]
 
-  const [currentYear, setCurrentYear] = useState(null);
+  const [currentYear, setCurrentYear] = useState(defaultYear);
 
   const onYearSelect = (newYear) => {setCurrentYear(newYear);};
 
   return (
     <div className="App">
       <header className="App-header">
-        <YearSelect years={years} onYearSubmit={onYearSelect} />
+        <YearSelect years={years} onYearSubmit={onYearSelect} defaultYear={defaultYear} />
         <RenderData year={currentYear}/>
       </header>
     </div>
