@@ -1,12 +1,18 @@
-# Getting Started with Create React App
+# Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a small react project that is part of an application to the Champaign County Regional Planning Commission Software Developer I position.
 
-## Available Scripts
+## Objective
 
-In the project directory, you can run:
+This website will grab data from the U.S. Census Bureua on the amount of people who commuted in different ways.
+The data will be obtained dynamically for the years 2010 - 2019, the data for a specific year being fetched and given whenever the user selects what year to view.
 
-### `npm start`
+Note: You wanted to see my thinking process and some brutal honesty so that's just what you are going to get.
+Expect to see some comments or commit messages that are just semi-processed thoughts. The end product should be documented well but throughout I'm just going to write stuff down.
+
+### Running the Code
+
+For now you can run the code with `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,57 +20,29 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+### Decisions
+There is / will be a .json file that contains the api key for the U.S. Census Bureua as well as one named .json.template (or \[name\.template.json]) that describes where to put the api key.
+Usually in a project I have the template and instructions for creating a file without the \[template\] and putting your api key there and have the file with the api key in .gitignore.
+As part of this is getting the api key and having the project work "out of the box" I will include the actual file with the template though I normally do not do this.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Log 
+Let's have some fun along the honesty and thought process line.
+I will have descriptive commit messages, it's something I have internalized, but those will sort of show the slow journey through the project.
 
-### `npm run build`
+Here I will keep a log of my overall progress each day so you can kind of see what happened at a glance and also information that is not represented in the git project itself.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Thursday and (most of) Friday: I knew none of the three component based javascript choices you said to work with. I have done *a lot* of work with Angular which is a component style framework for
+everything from the javascript to the HTML to the css.
+ * So looking at the choices Stencil: seems to be focused on UI which I do not need for this, React seems to be a component style system for javascript, Preact touted itself as a lightweight version of React
+ * Have the most experience with Angular, a heavily component focused setup, I went with React as the one most similar to what I know.
+ * I spent all of Thursday (6 to 7 hours was all the rest of my life permitted) learning React as best I could. I also found out how to use React with external APIs and created a test project with that.
+ * Friday was spent with more planning and documentation reading and a whiteboard until I just sat myself down and forced myself to code as you can have all of the theory you want, but if you cannot put it into practice you have nothing to show for it.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Plans / ToDo
+This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.
+* Get a basic template going that has the year selection and data communication between the user input and data app (should be simple).
+* Make sure I have external api integration working though display the results as plain text
+* Get the api key from the U.S. Census Buruea and mess around in Postman until I have the syntax down.
+* Change the api integration from earlier to connect with the U.S. Census instead of whatever I had it linked to before.
+* Have the data displayed in a bar graph instead of as plain text
+* Refactor everything.
