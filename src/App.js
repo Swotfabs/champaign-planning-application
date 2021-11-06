@@ -22,11 +22,8 @@ class YearSelect extends React.Component {
   }
 
   render () {
-    // Years will be an attribute of props but is defined here for now.
-    const years = ['2010', '2011', '2012']
-
     let yearsOptions = []
-    years.forEach((year) => {
+    this.props.years.forEach((year) => {
       const option = (
         <option key={year} value={year}>{year}</option>
         );
@@ -62,10 +59,12 @@ function RenderData(props) {
 // Likely going to have api logic in here as well
 // Not sure whether this will be via function with Hooks or a class
 function App() {
+  const years = ['2010', '2011', '2012', '2013'];
+
   return (
     <div className="App">
       <header className="App-header">
-        <YearSelect />
+        <YearSelect years={years} />
         <RenderData />
       </header>
     </div>
