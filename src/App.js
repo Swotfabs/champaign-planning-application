@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 class YearSelect extends React.Component {
@@ -18,6 +18,7 @@ class YearSelect extends React.Component {
   // handleSubmit will call a function passed in by props
   handleSubmit(event) {
     console.log('A year was submitted: ' + this.state.value);
+    this.props.onYearSubmit(this.state.value);
     event.preventDefault();
   }
 
@@ -49,7 +50,7 @@ function RenderData(props) {
   return (
     <div>
       <p>
-        Data rendering will go here.
+        Data for {props.year ? props.year : '[year]'} will be fetched.
       </p>
     </div>
   );
@@ -61,11 +62,15 @@ function RenderData(props) {
 function App() {
   const years = ['2010', '2011', '2012', '2013'];
 
+  const [currentYear, setCurrentYear] = useState(null);
+
+  const onYearSelect = (newYear) => {setCurrentYear(newYear);};
+
   return (
     <div className="App">
       <header className="App-header">
-        <YearSelect years={years} />
-        <RenderData />
+        <YearSelect years={years} onYearSubmit={onYearSelect} />
+        <RenderData year={currentYear}/>
       </header>
     </div>
   );
