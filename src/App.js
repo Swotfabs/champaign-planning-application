@@ -62,7 +62,7 @@ function RenderData(props) {
       </div>
     );
   } else {
-    // This is extremely hacky html but I just need to see that the github data is being fetched before I try the US Census bureau
+    // This is extremely hacky html but I just need to see that the github data is being fetched before I try the US Census Bureau
     html = (
       <div className="App">
         <p>GitHub User Data</p>
@@ -82,7 +82,7 @@ function RenderData(props) {
 // Likely going to have api logic in here as well
 // Not sure whether this will be via function with Hooks or a class
 function App() {
-  const years = ['https://api.github.com/users/deekshasharma', 'https://api.github.com/users/swotfabs'];
+  const years = ['https://api.github.com/users/deekshasharma', 'https://api.github.com/users/swotfabs', 'https://api.github.com/users/angrave'];
   const defaultYear = years[0]
 
   const [currentYear, setCurrentYear] = useState(null);
@@ -91,6 +91,7 @@ function App() {
   const onYearSelect = (newYear) => {setCurrentYear(newYear);};
 
   useEffect(() => {
+    console.log('useEffect Called with year: ' + currentYear);
     const getGitHubUserWithFetch = async () => {
       if (currentYear !== null) {
         const response = await fetch(currentYear);
@@ -98,7 +99,7 @@ function App() {
         setCurrentData(jsonData);
       }
     };
-
+    setCurrentData(null);
     getGitHubUserWithFetch();
   }, [currentYear]);
 
