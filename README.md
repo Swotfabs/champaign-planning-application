@@ -46,7 +46,7 @@ Saturday
  * had a commitment which prevented work on the project.
 
 Sunday
- * Placeholder
+ * App working with the github api, now to figure out the census api using a lot of Postman
 
 #### Plans / ToDo
 This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.
