@@ -50,9 +50,10 @@ Sunday
 
 #### Plans / ToDo
 This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.
-* Get a basic template going that has the year selection and data communication between the user input and data app (should be simple).
-* Make sure I have external api integration working though display the results as plain text
+* ~~Get a basic template going that has the year selection and data communication between the user input and data app (should be simple).~~ (Done)
+* ~~Make sure I have external api integration working though display the results as plain text~~ (Done)
 * Get the api key from the U.S. Census Buruea and mess around in Postman until I have the syntax down.
 * Change the api integration from earlier to connect with the U.S. Census instead of whatever I had it linked to before.
+* Remember to put "This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau." at the bottom of the bar graph as per the terms of service of the Census Bureau key.
 * Have the data displayed in a bar graph instead of as plain text
 * Refactor everything.
