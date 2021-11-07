@@ -32,7 +32,8 @@ I will have descriptive commit messages, it's something I have internalized, but
 
 Here I will keep a log of my overall progress each day so you can kind of see what happened at a glance and also information that is not represented in the git project itself.
 
-* Thursday and (most of) Friday: I knew none of the three component based javascript choices you said to work with. I have done *a lot* of work with Angular which is a component style framework for
+Thursday and (most of) Friday:
+ * I knew none of the three component based javascript choices you said to work with. I have done *a lot* of work with Angular which is a component style framework for
 everything from the javascript to the HTML to the css.
 	* So looking at the choices Stencil: seems to be focused on UI which I do not need for this, React seems to be a component style system for javascript, Preact touted itself as a lightweight version of React
 	* Have the most experience with Angular, a heavily component focused setup, I went with React as the one most similar to what I know.
@@ -40,6 +41,12 @@ everything from the javascript to the HTML to the css.
 	* Friday was spent with more planning and documentation reading and a whiteboard until I just sat myself down and forced myself to code as you can have all of the theory you want, but if you cannot put it into practice you have nothing to show for it.
 	* Have a functioning year selector component that communicates with the data rendering component in a way that leaves the overarching App component a function component which means I'll be able to use hooks to fetch the data from the api asynchrnonously.
 		* Which is to say I actually got a solid amount done on Friday.
+
+Saturday
+ * had a commitment which prevented work on the project.
+
+Sunday
+ * Placeholder
 
 #### Plans / ToDo
 This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.
