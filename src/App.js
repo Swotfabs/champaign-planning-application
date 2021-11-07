@@ -82,6 +82,7 @@ function RenderData(props) {
 // Likely going to have api logic in here as well
 // Not sure whether this will be via function with Hooks or a class
 function App() {
+  const apiKey = 'a3fa18be7c991e0837cf1235bf74ccd8a43b750f';
   const years = ['https://api.github.com/users/deekshasharma', 'https://api.github.com/users/swotfabs', 'https://api.github.com/users/angrave'];
   const defaultYear = years[years.length - 1];
 
