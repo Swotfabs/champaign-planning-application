@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 class YearSelect extends React.Component {
@@ -47,31 +47,66 @@ class YearSelect extends React.Component {
 
 // TODO replace with Bar Graph
 function RenderData(props) {
-  return (
-    <div>
-      <p>
-        Data for {props.year ? props.year : '[year]'} will be fetched.
-      </p>
-    </div>
-  );
+  // return (
+  //   <div>
+  //     <p>
+  //       Data for {props.year ? props.year : '[year]'} will be fetched.
+  //     </p>
+  //   </div>
+  // );
+  let html;
+  if (props.yearData === null) {
+    html = (
+      <div>
+        <p> Data is Loading </p>
+      </div>
+    );
+  } else {
+    // This is extremely hacky html but I just need to see that the github data is being fetched before I try the US Census bureau
+    html = (
+      <div className="App">
+        <p>GitHub User Data</p>
+        <div className="user-container">
+          <h5 className="info-item">{props.yearData.name}</h5>
+          <h5 className="info-item">{props.yearData.location}</h5>
+          <h5 className="info-item">{props.yearData.blog}</h5>
+          <h5 className="info-item">{props.yearData.company}</h5>
+        </div>
+      </div>
+    );
+  }
+  return html;
 }
 
 // Going to have both of the child elements in this, will likely lift up the state to this as well
 // Likely going to have api logic in here as well
 // Not sure whether this will be via function with Hooks or a class
 function App() {
-  const years = ['2010', '2011', '2012', '2013'];
+  const years = ['https://api.github.com/users/deekshasharma', 'https://api.github.com/users/swotfabs'];
   const defaultYear = years[0]
 
   const [currentYear, setCurrentYear] = useState(null);
+  const [currentData, setCurrentData] = useState(null);
 
   const onYearSelect = (newYear) => {setCurrentYear(newYear);};
+
+  useEffect(() => {
+    const getGitHubUserWithFetch = async () => {
+      if (currentYear !== null) {
+        const response = await fetch(currentYear);
+        const jsonData = await response.json();
+        setCurrentData(jsonData);
+      }
+    };
+
+    getGitHubUserWithFetch();
+  }, [currentYear]);
 
   return (
     <div className="App">
       <header className="App-header">
         <YearSelect years={years} onYearSubmit={onYearSelect} defaultYear={defaultYear} />
-        <RenderData year={currentYear}/>
+        <RenderData yearData={currentData}/>
       </header>
     </div>
   );
