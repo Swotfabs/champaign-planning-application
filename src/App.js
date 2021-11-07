@@ -83,7 +83,7 @@ function RenderData(props) {
 // Not sure whether this will be via function with Hooks or a class
 function App() {
   const years = ['https://api.github.com/users/deekshasharma', 'https://api.github.com/users/swotfabs', 'https://api.github.com/users/angrave'];
-  const defaultYear = years[0]
+  const defaultYear = years[years.length - 1];
 
   const [currentYear, setCurrentYear] = useState(null);
   const [currentData, setCurrentData] = useState(null);
