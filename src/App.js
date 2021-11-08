@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+const DEVMODE = (process.env.NODE_ENV === 'development');
+const log = DEVMODE ? console.log : (msg) => {};
+
+const censusCodes = {
+  total: 'B08006_001E',
+  carTruckVan: 'B08006_002E',
+  public: 'B08006_008E',
+  bicycle: 'B08006_014E',
+  walked: 'B08006_015E',
+  other: 'B08006_016E',
+  fromHome: 'B08006_017E',
+}
+
 class YearSelect extends React.Component {
   constructor (props) {
     super(props);
@@ -11,13 +24,13 @@ class YearSelect extends React.Component {
   }
 
   handleChange(event) {
-    console.log('Year changed to ' + event.target.value);
+    log('Year changed to ' + event.target.value);
     this.setState({value: event.target.value});
   }
 
   // handleSubmit will call a function passed in by props
   handleSubmit(event) {
-    console.log('A year was submitted: ' + this.state.value);
+    log('A year was submitted: ' + this.state.value);
     this.props.onYearSubmit(this.state.value);
     event.preventDefault();
   }
@@ -67,29 +80,29 @@ function RenderData(props) {
 
     for (let i = 0; i < props.yearData[0].length; i++) {
       switch (props.yearData[0][i]) {
-        case 'B08006_001E':
+        case censusCodes.total:
           stats.total = props.yearData[1][i];
           break;
-        case 'B08006_002E':
+        case censusCodes.carTruckVan:
           stats.carTruckVan = props.yearData[1][i];
           break;
-        case 'B08006_008E':
+        case censusCodes.public:
           stats.public = props.yearData[1][i];
           break;
-        case 'B08006_014E':
+        case censusCodes.bicycle:
           stats.bicycle = props.yearData[1][i];
           break;
-        case 'B08006_015E':
+        case censusCodes.walked:
           stats.walked = props.yearData[1][i];
           break;
-        case 'B08006_016E':
+        case censusCodes.other:
           stats.other = props.yearData[1][i];
           break;
-        case 'B08006_017E':
+        case censusCodes.fromHome:
           stats.fromHome = props.yearData[1][i];
           break;
         default:
-          // console.log('Error could not identify code ' + props.yearData[0][i])
+          // log('Error could not identify code ' + props.yearData[0][i])
           break;
       }
     }
@@ -121,13 +134,13 @@ function App() {
   const onYearSelect = (newYear) => {setCurrentYear(newYear);};
 
   useEffect(() => {
-    console.log('useEffect Called with year: ' + currentYear);
+    log('useEffect Called with year: ' + currentYear);
     const getGitHubUserWithFetch = async () => {
       if (currentYear !== null) {
         const request = censusRequestPrelude + currentYear + censusRequestPostlude + censusRequestApiKey;
         const response = await fetch(request);
         const jsonData = await response.json();
-        console.log(jsonData)
+        log(jsonData)
         setCurrentData(jsonData);
       }
     };
