@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+// If we are not in developer mode, do not log things directly to the console
 const DEVMODE = (process.env.NODE_ENV === 'development');
 const log = DEVMODE ? console.log : (msg) => {};
 
+// A dictionary to have the census codes in one place for readability and to update them if necessary
 const censusCodes = {
   total: 'B08006_001E',
   carTruckVan: 'B08006_002E',
@@ -14,6 +16,8 @@ const censusCodes = {
   fromHome: 'B08006_017E',
 }
 
+// This is the selector where the user chooses a year. It is a class because we need to completely bind handleChange and handleSubmit
+// to prevent submit's default behavior (attempting to redirect to another page)
 class YearSelect extends React.Component {
   constructor (props) {
     super(props);
@@ -28,7 +32,6 @@ class YearSelect extends React.Component {
     this.setState({value: event.target.value});
   }
 
-  // handleSubmit will call a function passed in by props
   handleSubmit(event) {
     log('A year was submitted: ' + this.state.value);
     this.props.onYearSubmit(this.state.value);
@@ -101,8 +104,12 @@ function RenderData(props) {
         case censusCodes.fromHome:
           stats.fromHome = props.yearData[1][i];
           break;
+        case 'state':
+          break;
+        case 'county':
+          break;
         default:
-          // log('Error could not identify code ' + props.yearData[0][i])
+          log('Error could not identify code ' + props.yearData[0][i])
           break;
       }
     }
