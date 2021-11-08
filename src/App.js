@@ -34,7 +34,7 @@ class YearSelect extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-        Select a year: 
+        Select a year:
           <select name="years" id="years" value={this.state.value} onChange={this.handleChange}>
             {yearsOptions}
           </select>
@@ -47,13 +47,6 @@ class YearSelect extends React.Component {
 
 // TODO replace with Bar Graph
 function RenderData(props) {
-  // return (
-  //   <div>
-  //     <p>
-  //       Data for {props.year ? props.year : '[year]'} will be fetched.
-  //     </p>
-  //   </div>
-  // );
   let html;
   if (props.yearData === null) {
     html = (
@@ -145,9 +138,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <YearSelect years={years} onYearSubmit={onYearSelect} defaultYear={defaultYear} />
-        <RenderData yearData={currentData}/>
+        <p> Acessing Census Data for Champaign County </p>
       </header>
+      <YearSelect years={years} onYearSubmit={onYearSelect} defaultYear={defaultYear} />
+      <RenderData yearData={currentData}/>
+      <p> "This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau." </p>
     </div>
   );
 }
