@@ -141,7 +141,8 @@ function App() {
     log('useEffect Called with year: ' + currentYear);
     const getGitHubUserWithFetch = async () => {
       if (currentYear !== null) {
-        const request = censusRequestPrelude + currentYear + censusRequestPostlude + censusRequestItems + censusRequestLocation + censusRequestApiKey;
+        const request = censusRequestPrelude + currentYear + censusRequestPostlude
+                        + censusRequestItems + censusRequestLocation + censusRequestApiKey;
         const response = await fetch(request);
         const jsonData = await response.json();
         log(jsonData)
