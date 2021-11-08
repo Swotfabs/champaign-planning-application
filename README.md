@@ -1,15 +1,12 @@
 # Description
 
-This is a small react project that is part of an application to the Champaign County Regional Planning Commission Software Developer I position.
+This is a small react project that is part of an application.
 Created by Fabian Junge.
 
 ## Objective
 
 This website will grab data from the U.S. Census Bureua on the amount of people who commuted in different ways.
 The data will be obtained dynamically for the years 2010 - 2019, the data for a specific year being fetched and given whenever the user selects what year to view.
-
-Note: You wanted to see my thinking process and some brutal honesty so that's just what you are going to get.
-Expect to see some comments or commit messages that are just semi-processed thoughts. The end product should be documented well but throughout I'm just going to write stuff down.
 
 ### Running the Code
 
@@ -22,9 +19,12 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### Decisions
-There is / will be a .json file that contains the api key for the U.S. Census Bureua as well as one named .json.template (or \[name\.template.json]) that describes where to put the api key.
-Usually in a project I have the template and instructions for creating a file without the \[template\] and putting your api key there and have the file with the api key in .gitignore.
+<!-- There is / will be a .json file that contains the api key for the U.S. Census Bureua as well as one named .json.template (or \[name\.template.json]) that describes where to put the api key. -->
+<!-- Usually in a project I have the template and instructions for creating a file without the \[template\] and putting your api key there and have the file with the api key in .gitignore.
 As part of this is getting the api key and having the project work "out of the box" I will include the actual file with the template though I normally do not do this.
+ -->
+Usually for a project that keeps an api key I do not hardcode the key in but rather have an external .json file the user has to put a key of their own in. As having an api key is part of the application
+I will have it in the repository (likely still as a separate .json file). That said right now the key isn't validating correctly and the api is working despite not having a key at all so this point may be mute.
 
 ### Log 
 Let's have some fun along the honesty and thought process line.
@@ -48,14 +48,14 @@ Saturday
 Sunday
  * App working with the github api, now to figure out the census api using a lot of Postman
  * Api now works with the Census Bureau's api albeit there is some key validation wonkyness going on
- 	* By which I mean the key fails to validate but I can use the Census's api without the need of a key. I sent an email to Matt regarding this.
+ 	* By which I mean the key fails to validate but I can use the Census's api without the need of a key. I sent an email regarding this.
 
 #### Plans / ToDo
 This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.
 * ~~Get a basic template going that has the year selection and data communication between the user input and data app (should be simple).~~ (Done)
 * ~~Make sure I have external api integration working though display the results as plain text~~ (Done)
 * Get the api key from the U.S. Census Buruea and mess around in Postman until I have the syntax down.
-* Change the api integration from earlier to connect with the U.S. Census instead of whatever I had it linked to before.
+* ~~Change the api integration from earlier to connect with the U.S. Census instead of whatever I had it linked to before.~~ (Done)
 * ~~Remember to put "This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau." at the bottom of the bar graph as per the terms of service of the Census Bureau key.~~ (Done)
 * Have the data displayed in a bar graph instead of as plain text
-* Refactor everything.
+* Refactor and clean up everything.
