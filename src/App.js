@@ -64,14 +64,8 @@ function RenderData(props) {
   } else {
     // This is extremely hacky html but I just need to see that the github data is being fetched before I try the US Census Bureau
     html = (
-      <div className="App">
-        <p>GitHub User Data</p>
-        <div className="user-container">
-          <h5 className="info-item">{props.yearData.name}</h5>
-          <h5 className="info-item">{props.yearData.location}</h5>
-          <h5 className="info-item">{props.yearData.blog}</h5>
-          <h5 className="info-item">{props.yearData.company}</h5>
-        </div>
+      <div>
+      {props.yearData}
       </div>
     );
   }
@@ -82,8 +76,13 @@ function RenderData(props) {
 // Likely going to have api logic in here as well
 // Not sure whether this will be via function with Hooks or a class
 function App() {
-  const apiKey = 'a3fa18be7c991e0837cf1235bf74ccd8a43b750f';
-  const years = ['https://api.github.com/users/deekshasharma', 'https://api.github.com/users/swotfabs', 'https://api.github.com/users/angrave'];
+  const censusRequestPrelude = 'https://api.census.gov/data/';
+  const censusRequestPostlude = '/acs/acs5?get=B08006_001E,B08006_002E,B08006_008E,B08006_014E,B08006_015E,B08006_016E,B08006_017E&for=county:019&in=state:17';
+  // const censusRequestApiKey = '&key=a3fa18be7c991e0837cf1235bf74ccd8a43b750f';
+  // const censusRequestApiKey = '&key=1265b6a0043eaa3ef66e72e66e38cb8f8776afa8';
+  const censusRequestApiKey = '';
+
+  const years = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'];
   const defaultYear = years[years.length - 1];
 
   const [currentYear, setCurrentYear] = useState(null);
@@ -95,7 +94,8 @@ function App() {
     console.log('useEffect Called with year: ' + currentYear);
     const getGitHubUserWithFetch = async () => {
       if (currentYear !== null) {
-        const response = await fetch(currentYear);
+        const request = censusRequestPrelude + currentYear + censusRequestPostlude + censusRequestApiKey;
+        const response = await fetch(request);
         const jsonData = await response.json();
         setCurrentData(jsonData);
       }
