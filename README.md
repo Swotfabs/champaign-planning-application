@@ -50,6 +50,9 @@ Sunday
  * Api now works with the Census Bureau's api albeit there is some key validation wonkyness going on
  	* By which I mean the key fails to validate but I can use the Census's api without the need of a key. I sent an email regarding this.
 
+Monday
+ * Moved all census codes to a dict at the very top to increase readability and so they can be easily updated should the codes change in the future without having to touch the rest of the project.
+
 #### Plans / ToDo
 This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.
 * ~~Get a basic template going that has the year selection and data communication between the user input and data app (should be simple).~~ (Done)
