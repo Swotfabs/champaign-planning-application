@@ -120,7 +120,11 @@ function RenderData(props) {
 // Not sure whether this will be via function with Hooks or a class
 function App() {
   const censusRequestPrelude = 'https://api.census.gov/data/';
-  const censusRequestPostlude = '/acs/acs5?get=B08006_001E,B08006_002E,B08006_008E,B08006_014E,B08006_015E,B08006_016E,B08006_017E&for=county:019&in=state:17';
+  const censusRequestPostlude = '/acs/acs5'
+  const censusRequestItems = '?get=' + censusCodes.total + ',' + censusCodes.carTruckVan + ','
+                             + censusCodes.public + ',' + censusCodes.bicycle + ',' + censusCodes.walked + ','
+                             + censusCodes.other + ',' + censusCodes.fromHome
+  const censusRequestLocation = '&for=county:019&in=state:17';
   // const censusRequestApiKey = '&key=a3fa18be7c991e0837cf1235bf74ccd8a43b750f';
   // const censusRequestApiKey = '&key=1265b6a0043eaa3ef66e72e66e38cb8f8776afa8';
   const censusRequestApiKey = '';
@@ -137,7 +141,7 @@ function App() {
     log('useEffect Called with year: ' + currentYear);
     const getGitHubUserWithFetch = async () => {
       if (currentYear !== null) {
-        const request = censusRequestPrelude + currentYear + censusRequestPostlude + censusRequestApiKey;
+        const request = censusRequestPrelude + currentYear + censusRequestPostlude + censusRequestItems + censusRequestLocation + censusRequestApiKey;
         const response = await fetch(request);
         const jsonData = await response.json();
         log(jsonData)
@@ -146,7 +150,7 @@ function App() {
     };
     setCurrentData(null);
     getGitHubUserWithFetch();
-  }, [currentYear]);
+  }, [currentYear, censusRequestItems]);
 
   return (
     <div className="App">
