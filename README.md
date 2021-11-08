@@ -47,6 +47,8 @@ Saturday
 
 Sunday
  * App working with the github api, now to figure out the census api using a lot of Postman
+ * Api now works with the Census Bureau's api albeit there is some key validation wonkyness going on
+ 	* By which I mean the key fails to validate but I can use the Census's api without the need of a key. I sent an email to Matt regarding this.
 
 #### Plans / ToDo
 This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.

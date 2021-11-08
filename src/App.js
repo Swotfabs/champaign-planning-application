@@ -62,10 +62,47 @@ function RenderData(props) {
       </div>
     );
   } else {
-    // This is extremely hacky html but I just need to see that the github data is being fetched before I try the US Census Bureau
+    let stats = {
+      total: null,
+      carTruckVan: null,
+      public: null,
+      bicycle: null,
+      walked: null,
+      other: null,
+      fromHome: null
+    }
+
+    for (let i = 0; i < props.yearData[0].length; i++) {
+      switch (props.yearData[0][i]) {
+        case 'B08006_001E':
+          stats.total = props.yearData[1][i];
+          break;
+        case 'B08006_002E':
+          stats.carTruckVan = props.yearData[1][i];
+          break;
+        case 'B08006_008E':
+          stats.public = props.yearData[1][i];
+          break;
+        case 'B08006_014E':
+          stats.bicycle = props.yearData[1][i];
+          break;
+        case 'B08006_015E':
+          stats.walked = props.yearData[1][i];
+          break;
+        case 'B08006_016E':
+          stats.other = props.yearData[1][i];
+          break;
+        case 'B08006_017E':
+          stats.fromHome = props.yearData[1][i];
+          break;
+        default:
+          // console.log('Error could not identify code ' + props.yearData[0][i])
+          break;
+      }
+    }
     html = (
       <div>
-      {props.yearData}
+      {JSON.stringify(stats)}
       </div>
     );
   }
@@ -97,6 +134,7 @@ function App() {
         const request = censusRequestPrelude + currentYear + censusRequestPostlude + censusRequestApiKey;
         const response = await fetch(request);
         const jsonData = await response.json();
+        console.log(jsonData)
         setCurrentData(jsonData);
       }
     };
