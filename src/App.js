@@ -136,6 +136,7 @@ function RenderData(props) {
           hAxis: {
             title: 'Total Commuters',
             minValue: 0,
+            axisTitlesPosition: 'none',
             viewWindow: {
               min:0,
               max: stats.total,
