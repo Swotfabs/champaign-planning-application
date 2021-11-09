@@ -116,8 +116,8 @@ function RenderData(props) {
     }
     html = (
       <Chart
-        width={'500px'}
-        height={'300px'}
+        width={'58em'}
+        height={'27em'}
         chartType="BarChart"
         loader={<div>Loading Chart</div>}
         data={[
