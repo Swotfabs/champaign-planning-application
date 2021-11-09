@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Chart from "react-google-charts";
 import './App.css';
 
 // If we are not in developer mode, do not log things directly to the console
@@ -84,25 +85,25 @@ function RenderData(props) {
     for (let i = 0; i < props.yearData[0].length; i++) {
       switch (props.yearData[0][i]) {
         case censusCodes.total:
-          stats.total = props.yearData[1][i];
+          stats.total = parseInt(props.yearData[1][i], 10);
           break;
         case censusCodes.carTruckVan:
-          stats.carTruckVan = props.yearData[1][i];
+          stats.carTruckVan = parseInt(props.yearData[1][i], 10);
           break;
         case censusCodes.public:
-          stats.public = props.yearData[1][i];
+          stats.public = parseInt(props.yearData[1][i], 10);
           break;
         case censusCodes.bicycle:
-          stats.bicycle = props.yearData[1][i];
+          stats.bicycle = parseInt(props.yearData[1][i], 10);
           break;
         case censusCodes.walked:
-          stats.walked = props.yearData[1][i];
+          stats.walked = parseInt(props.yearData[1][i], 10);
           break;
         case censusCodes.other:
-          stats.other = props.yearData[1][i];
+          stats.other = parseInt(props.yearData[1][i], 10);
           break;
         case censusCodes.fromHome:
-          stats.fromHome = props.yearData[1][i];
+          stats.fromHome = parseInt(props.yearData[1][i], 10);
           break;
         case 'state':
           break;
@@ -114,9 +115,35 @@ function RenderData(props) {
       }
     }
     html = (
-      <div>
-      {JSON.stringify(stats)}
-      </div>
+      <Chart
+        width={'500px'}
+        height={'300px'}
+        chartType="BarChart"
+        loader={<div>Loading Chart</div>}
+        data={[
+          ['Commuting Method', 'Number of Commuters'],
+          // ['Total', stats.total],
+          ['Car, Truck, or Van', stats.carTruckVan],
+          ['Public Transpoertation', stats.public],
+          ['Bicycle', stats.bicycle],
+          ['Walked', stats.walked],
+          ['Other Transportation', stats.other],
+          ['Worked From Home', stats.fromHome],
+        ]}
+        options={{
+          title: 'Commuting methods for ' + props.year,
+          chartArea: { width: '50%' },
+          hAxis: {
+            title: 'Total Commuters',
+            minValue: 0,
+          },
+          vAxis: {
+            title: 'Method',
+          },
+        }}
+        // For tests
+        rootProps={{ 'data-testid': '1' }}
+      />
     );
   }
   return html;
@@ -145,6 +172,9 @@ function App() {
   const onYearSelect = (newYear) => {setCurrentYear(newYear);};
 
   useEffect(() => {
+    if (currentYear === null) {
+      return;
+    }
     log('useEffect Called with year: ' + currentYear);
     const getGitHubUserWithFetch = async () => {
       if (currentYear !== null) {
@@ -166,7 +196,7 @@ function App() {
         <p> Acessing Census Data for Champaign County </p>
       </header>
       <YearSelect years={years} onYearSubmit={onYearSelect} defaultYear={defaultYear} />
-      <RenderData yearData={currentData}/>
+      <RenderData year={currentYear} yearData={currentData}/>
       <p> "This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau." </p>
     </div>
   );
