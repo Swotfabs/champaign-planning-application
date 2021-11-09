@@ -123,6 +123,7 @@ function RenderData(props) {
         loader={<div>Loading Chart</div>}
         data={[
           ['Commuting Method', 'Number of Commuters'],
+          ['Total', stats.total],
           ['Car, Truck, or Van', stats.carTruckVan],
           ['Public Transpoertation', stats.public],
           ['Bicycle', stats.bicycle],
@@ -136,7 +137,6 @@ function RenderData(props) {
           hAxis: {
             title: 'Total Commuters',
             minValue: 0,
-            axisTitlesPosition: 'none',
             viewWindow: {
               min:0,
               max: stats.total,
