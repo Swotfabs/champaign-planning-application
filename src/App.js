@@ -123,7 +123,6 @@ function RenderData(props) {
         loader={<div>Loading Chart</div>}
         data={[
           ['Commuting Method', 'Number of Commuters'],
-          ['Total', stats.total],
           ['Car, Truck, or Van', stats.carTruckVan],
           ['Public Transpoertation', stats.public],
           ['Bicycle', stats.bicycle],
@@ -141,9 +140,15 @@ function RenderData(props) {
               min:0,
               max: stats.total,
             },
+            ticks: [
+              {v:0, f:'0%'},
+              {v:Math.round(stats.total * .25), f:'25%'},
+              {v:Math.round(stats.total * .5), f:'50%'},
+              {v:Math.round(stats.total * .75), f:'75%'},
+              {v:stats.total, f:'100%'},
+            ]
           },
           vAxis: {
-            title: 'Method',
           },
         }}
         // For tests
