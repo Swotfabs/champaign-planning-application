@@ -163,10 +163,10 @@ function App() {
   // const censusRequestApiKey = '&key=1265b6a0043eaa3ef66e72e66e38cb8f8776afa8';
   const censusRequestApiKey = '';
 
-  const years = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'];
-  const defaultYear = years[years.length - 1];
+  const years = ['2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010'];
+  const defaultYear = years[0];
 
-  const [currentYear, setCurrentYear] = useState(null);
+  const [currentYear, setCurrentYear] = useState(defaultYear);
   const [currentData, setCurrentData] = useState(null);
 
   const onYearSelect = (newYear) => {setCurrentYear(newYear);};
