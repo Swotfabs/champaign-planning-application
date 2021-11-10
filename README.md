@@ -60,6 +60,7 @@ Tuesday
 
 Wednesday
  * Cleaning, a little bit more documentation, cloning the project in an empty repository and making sure it works.
+ * Added total commuters to bottom of graph in a sensible way.
 
 #### Plans / ToDo
 This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.
