@@ -63,5 +63,5 @@ This will likely be updated after I finish things and might not be in the final 
 * Get the api key from the U.S. Census Buruea and mess around in Postman until I have the syntax down.
 * ~~Change the api integration from earlier to connect with the U.S. Census instead of whatever I had it linked to before.~~ (Done)
 * ~~Remember to put "This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau." at the bottom of the bar graph as per the terms of service of the Census Bureau key.~~ (Done)
-* Have the data displayed in a bar graph instead of as plain text
+* ~~Have the data displayed in a bar graph instead of as plain text~~ (Done)
 * Refactor and clean up everything.
