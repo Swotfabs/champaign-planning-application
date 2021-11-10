@@ -10,9 +10,11 @@ The data will be obtained dynamically for the years 2010 - 2019, the data for a 
 
 ### Running the Code
 
-For now you can run the code with `npm start`
+Clone the project, run `npm install` to get everying set up.
 
-Runs the app in the development mode.\
+To start the server run `npm start`
+
+This runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
@@ -24,7 +26,7 @@ You will also see any lint errors in the console.
 As part of this is getting the api key and having the project work "out of the box" I will include the actual file with the template though I normally do not do this.
  -->
 Usually for a project that keeps an api key I do not hardcode the key in but rather have an external .json file the user has to put a key of their own in. As having an api key is part of the application
-I will have it in the repository (likely still as a separate .json file). That said right now the key isn't validating correctly and the api is working despite not having a key at all so this point may be mute.
+I would have it in the repository... except right now the key isn't validating correctly and the api is working despite not recieving having a key at all so this point is mute.
 
 ### Log 
 Let's have some fun along the honesty and thought process line.
@@ -56,6 +58,9 @@ Monday
 Tuesday
  * After trying two others, managed to get google-chart working with the application. Edited to look the way I want it to and cleaned up the fetch() logic.
 
+Wednesday
+ * Cleaning, a little bit more documentation, cloning the project in an empty repository and making sure it works.
+
 #### Plans / ToDo
 This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.
 * ~~Get a basic template going that has the year selection and data communication between the user input and data app (should be simple).~~ (Done)
@@ -64,4 +69,4 @@ This will likely be updated after I finish things and might not be in the final 
 * ~~Change the api integration from earlier to connect with the U.S. Census instead of whatever I had it linked to before.~~ (Done)
 * ~~Remember to put "This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau." at the bottom of the bar graph as per the terms of service of the Census Bureau key.~~ (Done)
 * ~~Have the data displayed in a bar graph instead of as plain text~~ (Done)
-* Refactor and clean up everything.
+* ~~Refactor and clean up everything.~~ (One can do this to any arbitrary degree but right now things are readable and clean which for this application is the main thing I care about)

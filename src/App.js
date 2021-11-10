@@ -62,7 +62,7 @@ class YearSelect extends React.Component {
   }
 }
 
-// TODO replace with Bar Graph
+// This is the bar graph that gets data from the Census Bureau api.
 function RenderData(props) {
   let html;
   if (props.yearData === null) {
@@ -114,7 +114,6 @@ function RenderData(props) {
           break;
       }
     }
-    console.log(stats.total);
     html = (
       <Chart
         width={'58em'}
@@ -159,16 +158,18 @@ function RenderData(props) {
   return html;
 }
 
-// Going to have both of the child elements in this, will likely lift up the state to this as well
-// Likely going to have api logic in here as well
-// Not sure whether this will be via function with Hooks or a class
+// This is the main app, it uses hooks to hold a state as well as to respond to the census api asynchronously.
 function App() {
+  // The http request is built in different parts rather than one large string partially for readability and also
+  // so that it can be changed if necessary.
   const censusRequestPrelude = 'https://api.census.gov/data/';
   const censusRequestPostlude = '/acs/acs5'
   const censusRequestItems = '?get=' + censusCodes.total + ',' + censusCodes.carTruckVan + ','
                              + censusCodes.public + ',' + censusCodes.bicycle + ',' + censusCodes.walked + ','
                              + censusCodes.other + ',' + censusCodes.fromHome
   const censusRequestLocation = '&for=county:019&in=state:17';
+
+  // The keys aren't working (and I have sent an email regarding this) but the api currently doesn't need a key so we are simply not passing one in.
   // const censusRequestApiKey = '&key=a3fa18be7c991e0837cf1235bf74ccd8a43b750f';
   // const censusRequestApiKey = '&key=1265b6a0043eaa3ef66e72e66e38cb8f8776afa8';
   const censusRequestApiKey = '';
@@ -181,12 +182,14 @@ function App() {
 
   const onYearSelect = (newYear) => {setCurrentYear(newYear);};
 
+  // When the year is changed we query erase the data we currently have and querry the census api for new data
+  // If "submit" was pressed in the selector but with the same year as we already have we do not need to re-fetch the same data
   useEffect(() => {
     if (currentYear === null) {
       return;
     }
     log('useEffect Called with year: ' + currentYear);
-    const getGitHubUserWithFetch = async () => {
+    const censusApiWithFetch = async () => {
       if (currentYear !== null) {
         const request = censusRequestPrelude + currentYear + censusRequestPostlude
                         + censusRequestItems + censusRequestLocation + censusRequestApiKey;
@@ -201,7 +204,7 @@ function App() {
       }
     };
     setCurrentData(null);
-    getGitHubUserWithFetch();
+    censusApiWithFetch();
   }, [currentYear, censusRequestItems]);
 
   return (
