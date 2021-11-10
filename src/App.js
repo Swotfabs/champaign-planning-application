@@ -133,7 +133,7 @@ function RenderData(props) {
           title: 'Commuting methods for ' + props.year,
           chartArea: { width: '50%' },
           hAxis: {
-            title: 'Total Commuters',
+            title: 'Commuters out of ' + stats.total.toLocaleString(),
             minValue: 0,
             viewWindow: {
               min:0,
