@@ -122,13 +122,13 @@ function RenderData(props) {
         chartType="BarChart"
         loader={<div>Loading Chart</div>}
         data={[
-          ['Commuting Method', 'Number of Commuters'],
-          ['Car, Truck, or Van', stats.carTruckVan],
-          ['Public Transpoertation', stats.public],
-          ['Bicycle', stats.bicycle],
-          ['Walked', stats.walked],
-          ['Other Transportation', stats.other],
-          ['Worked From Home', stats.fromHome],
+          ['Commuting Method', 'Number of Commuters', {role: 'annotation'}],
+          ['Car, Truck, or Van', stats.carTruckVan, stats.carTruckVan],
+          ['Public Transpoertation', stats.public, stats.public],
+          ['Bicycle', stats.bicycle, stats.bicycle],
+          ['Walked', stats.walked, stats.walked],
+          ['Other Transportation', stats.other, stats.other],
+          ['Worked From Home', stats.fromHome, stats.fromHome],
         ]}
         options={{
           title: 'Commuting methods for ' + props.year,
@@ -190,10 +190,14 @@ function App() {
       if (currentYear !== null) {
         const request = censusRequestPrelude + currentYear + censusRequestPostlude
                         + censusRequestItems + censusRequestLocation + censusRequestApiKey;
-        const response = await fetch(request);
-        const jsonData = await response.json();
-        log(jsonData)
-        setCurrentData(jsonData);
+
+        fetch(request, {mode: 'cors'})
+          .then(response => response.json())
+          .then((jsonData) => {
+            log(jsonData);
+            setCurrentData(jsonData);
+          })
+          .catch(error => log(error));
       }
     };
     setCurrentData(null);
