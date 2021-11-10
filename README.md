@@ -53,6 +53,9 @@ Sunday
 Monday
  * Moved all census codes to a dict at the very top to increase readability and so they can be easily updated should the codes change in the future without having to touch the rest of the project.
 
+Tuesday
+ * After trying two others, managed to get google-chart working with the application. Edited to look the way I want it to and cleaned up the fetch() logic.
+
 #### Plans / ToDo
 This will likely be updated after I finish things and might not be in the final Readme at the end but it is here now.
 * ~~Get a basic template going that has the year selection and data communication between the user input and data app (should be simple).~~ (Done)
