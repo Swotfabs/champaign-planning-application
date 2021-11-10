@@ -207,7 +207,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p> Acessing Census Data for Champaign County </p>
+        <p>Commuting Data for Champaign County </p>
       </header>
       <YearSelect years={years} onYearSubmit={onYearSelect} defaultYear={defaultYear} />
       <RenderData year={currentYear} yearData={currentData}/>
